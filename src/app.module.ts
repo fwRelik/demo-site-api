@@ -3,6 +3,7 @@ import { AuthModule } from './auth/auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getMongoConfig } from './configs/mongo.config';
+import { PageModule } from './page/page.module';
 
 @Module({
 	imports: [
@@ -15,6 +16,7 @@ import { getMongoConfig } from './configs/mongo.config';
 			inject: [ConfigService],
 			useFactory: getMongoConfig,
 		}),
+		PageModule,
 	],
 })
 export class AppModule {}
