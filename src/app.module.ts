@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getMongoConfig } from './configs/mongo.config';
 import { PageModule } from './page/page.module';
+import { LanguageModule } from './language/language.module';
 
 @Module({
 	imports: [
@@ -17,6 +18,7 @@ import { PageModule } from './page/page.module';
 			useFactory: getMongoConfig,
 		}),
 		PageModule,
+		LanguageModule,
 	],
 })
 export class AppModule {}
