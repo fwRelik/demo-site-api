@@ -1,10 +1,25 @@
-import { Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { BasePageModel } from './base-page.model';
+import { LanguageModel } from './language.model';
 
 export type MainPageDocument = HydratedDocument<MainPageModel>;
 
 @Schema()
-export class MainPageModel extends BasePageModel {}
+export class MainPageModel {
+	@Prop({ required: true })
+	title: string;
+
+	@Prop({ required: true })
+	description: string;
+
+	@Prop({ required: true })
+	editable: boolean;
+
+	@Prop({ required: true })
+	removable: boolean;
+
+	@Prop({ type: LanguageModel, required: true })
+	languagePack: LanguageModel;
+}
 
 export const MainPageSchema = SchemaFactory.createForClass(MainPageModel);
