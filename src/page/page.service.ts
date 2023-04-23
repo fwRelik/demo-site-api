@@ -28,8 +28,8 @@ export class PageService {
 		return await this.mainPageModel.create(page);
 	}
 
-	async updateMainPage(id: string, page: MainPageModel) {
-		const updated = await this.mainPageModel.findByIdAndUpdate(id, page, { new: true }).exec();
+	async updateMainPage(page: MainPageModel) {
+		const updated = await this.mainPageModel.findOneAndUpdate({}, page, { new: true }).exec();
 		if (!updated) throw new NotFoundException(PAGE_NOT_FOUND);
 
 		return updated;
@@ -43,7 +43,7 @@ export class PageService {
 		return await this.roomPageModel.find({}).exec();
 	}
 
-	async getByIdRoomPage(id: string) {
+	async getRoomPageById(id: string) {
 		const isExist = await this.roomPageModel.findById(id).exec();
 		if (!isExist) throw new NotFoundException(PAGE_NOT_FOUND);
 
@@ -53,13 +53,13 @@ export class PageService {
 	async createRoomPage(page: RoomPageModel) {
 		return await this.roomPageModel.create(page);
 	}
-	async updateRoomPage(id: string, page: RoomPageModel) {
+	async updateRoomPageById(id: string, page: RoomPageModel) {
 		const updated = await this.roomPageModel.findByIdAndUpdate(id, page, { new: true }).exec();
 		if (!updated) throw new NotFoundException(PAGE_NOT_FOUND);
 
 		return updated;
 	}
-	async deleteRoomPage(id: string) {
+	async deleteRoomPageById(id: string) {
 		const removed = this.roomPageModel.findByIdAndDelete(id).exec();
 		if (!removed) throw new NotFoundException(PAGE_NOT_FOUND);
 

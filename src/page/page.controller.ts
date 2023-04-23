@@ -16,16 +16,16 @@ export class PageController {
 		return this.pageService.getMainPage();
 	}
 
-	@UsePipes(new ValidationPipe())
+	// @UsePipes(new ValidationPipe())
 	@Post('main')
 	async createMainPage(@Body() data: MainPageModel) {
 		return this.pageService.createMainPage(data);
 	}
 
-	@UsePipes(new ValidationPipe())
-	@Patch('main/:id')
-	async updateMainPage(@Param('id', IdValidationPipe) id, @Body() data: MainPageModel) {
-		return await this.pageService.updateMainPage(id, data);
+	// @UsePipes(new ValidationPipe())
+	@Patch('main')
+	async updateMainPage(@Body() data: MainPageModel) {
+		return await this.pageService.updateMainPage(data);
 	}
 
 	//#endregion
@@ -39,28 +39,28 @@ export class PageController {
 
 	@Get('room/:id')
 	async getByIdRoomPage(@Param('id', IdValidationPipe) id) {
-		return this.pageService.getByIdRoomPage(id);
+		return this.pageService.getRoomPageById(id);
 	}
 
-	@UseGuards(JwtAuthGuard)
+	// @UseGuards(JwtAuthGuard)
 	@UsePipes(new ValidationPipe())
 	@Post('room')
 	async createRoomPage(@Body() data: RoomPageModel) {
 		return this.pageService.createRoomPage(data);
 	}
 
-	@UseGuards(JwtAuthGuard)
+	// @UseGuards(JwtAuthGuard)
 	@UsePipes(new ValidationPipe())
 	@Patch('room/:id')
 	async updateRoomPage(@Param('id', IdValidationPipe) id, @Body() data: RoomPageModel) {
-		return await this.pageService.updateRoomPage(id, data);
+		return await this.pageService.updateRoomPageById(id, data);
 	}
 
-	@UseGuards(JwtAuthGuard)
+	// @UseGuards(JwtAuthGuard)
 	@UsePipes(new ValidationPipe())
 	@Delete('room/:id')
 	async deleteRoomPage(@Param('id', IdValidationPipe) id) {
-		return await this.pageService.deleteRoomPage(id);
+		return await this.pageService.deleteRoomPageById(id);
 	}
 
 	//#endregion

@@ -4,10 +4,7 @@ import { HydratedDocument } from 'mongoose';
 export type AuthDocument = HydratedDocument<AuthModel>;
 
 @Schema()
-export class AuthModel {
-	@Prop({ required: true })
-	name: string;
-
+export class AuthModel { 
 	@Prop({ required: true })
 	email: string;
 

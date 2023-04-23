@@ -22,7 +22,6 @@ export class AuthService {
 		// If not exist user
 		const salt = await genSalt(10);
 		const newUser = new this.authModel({
-			name: dto.name,
 			email: dto.email,
 			passwordHash: await hash(dto.password, salt),
 		});

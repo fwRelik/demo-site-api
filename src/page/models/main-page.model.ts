@@ -13,9 +13,6 @@ export class MainPageModel {
 	description: string;
 
 	@Prop({ required: true })
-	editable: boolean;
-
-	@Prop({ required: true })
 	removable: boolean;
 
 	@Prop({ type: LanguageModel, required: true })
