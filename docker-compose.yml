@@ -5,3 +5,5 @@ services:
     container_name: container_api
     ports:
       - 4006:4006
+    env_file:
+      - '.env.local'
