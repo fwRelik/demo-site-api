@@ -16,13 +16,13 @@ export class PageController {
 		return this.pageService.getMainPage();
 	}
 
-	// @UsePipes(new ValidationPipe())
+	@UsePipes(new ValidationPipe())
 	@Post('main')
 	async createMainPage(@Body() data: MainPageModel) {
 		return this.pageService.createMainPage(data);
 	}
 
-	// @UsePipes(new ValidationPipe())
+	@UsePipes(new ValidationPipe())
 	@Patch('main')
 	async updateMainPage(@Body() data: MainPageModel) {
 		return await this.pageService.updateMainPage(data);
